@@ -87,27 +87,33 @@ libsm6 libgl1-mesa-glx libomp5 pip unzip libjpeg8 libtiff5 software-properties-c
 
 RUN mkdir carla
 
-RUN wget https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/CARLA_${CARLA_VERSION}.tar.gz -nv --show-progress \
+ENV http_proxy http://172.17.0.1:7890
+ENV https_proxy http://172.17.0.1:7890
+
+#  && rm CARLA_${CARLA_VERSION}.tar.gz 
+# && rm AdditionalMaps_${CARLA_VERSION}.tar.gz
+RUN wget -c https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/CARLA_${CARLA_VERSION}.tar.gz -nv --show-progress \
 --progress=bar:force:noscroll \
-&& tar -zxvf CARLA_${CARLA_VERSION}.tar.gz --directory carla && rm CARLA_${CARLA_VERSION}.tar.gz \
+&& tar -zxvf CARLA_${CARLA_VERSION}.tar.gz --directory carla\
 && if [ ${ADDITIONAL_MAPS} = true ] ; then \
-wget https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/AdditionalMaps_${CARLA_VERSION}.tar.gz -nv \
+wget -c https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/AdditionalMaps_${CARLA_VERSION}.tar.gz -nv \
 --show-progress --progress=bar:force:noscroll && \
-tar -zxvf AdditionalMaps_${CARLA_VERSION}.tar.gz --directory carla && rm AdditionalMaps_${CARLA_VERSION}.tar.gz ; \
+tar -zxvf AdditionalMaps_${CARLA_VERSION}.tar.gz --directory carla ; \
 elif [ ${ADDITIONAL_MAPS} != false ] ; then echo "Invalid ADDITIONAL_MAPS argument." ; \
 else echo "Additional CARLA maps will not be installed." ; fi && chown -R ${USER}:${USER} /home/carla
 
 # Install the perception components (PyTorch and YOLOv5).
 
 RUN if [ ${PERCEPTION} = true ] ; then \
-pip install torch torchvision torchaudio yolov5 ; \
+pip install urllib3==1.25.4 requests==2.23.0 \
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch torchvision torchaudio yolov5 ; \
 elif [ ${PERCEPTION} != false ] ; then echo "Invalid PERCEPTION argument." ; \
 else echo "Perception components (PyTorch and YOLOv5) will not be installed." ; fi
 
 # Install SUMO.
 
 RUN if [ ${SUMO} = true ] ; then \
-add-apt-repository ppa:sumo/stable && apt-get update && apt-get install -y sumo sumo-tools sumo-doc \
+add-apt-repository ppa:sumo/stable && apt-get update && apt-get install -y sumo sumo-tools sumo-doc && apt-get install --fix-missing\
 && pip install traci ; \
 elif [ ${SUMO} != false ] ; then echo "Invalid SUMO argument." ; \
 else echo "SUMO will not be installed." ; fi
@@ -125,3 +131,6 @@ git clone https://github.com/ucla-mobility/OpenCDA.git && pip install -r OpenCDA
 else echo "Invalid OPENCDA_FULL_INSTALL argument." ; fi
 
 USER ${USER}
+
+ENV http_proxy ""
+ENV https_proxy ""

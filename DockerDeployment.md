@@ -37,11 +37,15 @@ vulkaninfo
  1. [Install Docker](https://docs.docker.com/engine/install/) on your system.
  2. If you are using an Nvidia graphics card, [install the Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installation-guide). It exposes your Nvidia graphics
  card to Docker containers.
- 3. In the Dockerfile directory, run
+ 3. Open remote display
+```shell
+xhost +
+```
+ 4. In the Dockerfile directory, run
  ```shell
  docker build -t opencda_container .
  ```
- 4. Build Docker Container
+ 5. Build Docker Container
  ```shell
  docker run --privileged --gpus all --network=host -e DISPLAY=$DISPLAY -v /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d -it opencda:latest /bin/bash
  ```
@@ -51,7 +55,17 @@ Note:
 It is recommended that you restart your computer after completing the installation of the above two graphical interface components to ensure that it takes effect.
 
 ### Example
-You can test some of the [examples provided by OpenCDA](https://opencda-documentation.readthedocs.io/en/latest/md_files/getstarted.html)
+Now, you can now start the Carla server in the built container:
+```shell
+# Start the Carla server
+cd carla
+
+./CarlaUE4.sh
+```
+After a few moments of loading, you will get a city simulation window:
+![intro_map](docs/md_files/images/intro_map.png)
+
+Then you can test some of the [examples provided by OpenCDA](https://opencda-documentation.readthedocs.io/en/latest/md_files/getstarted.html)
 
 Note: You need to make sure that the `Carla server` is running.
 
