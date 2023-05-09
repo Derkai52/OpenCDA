@@ -87,18 +87,16 @@ libsm6 libgl1-mesa-glx libomp5 pip unzip libjpeg8 libtiff5 software-properties-c
 
 RUN mkdir carla
 
-ENV http_proxy http://172.17.0.1:7890
-ENV https_proxy http://172.17.0.1:7890
+# ENV http_proxy http://172.17.0.1:7890
+# ENV https_proxy http://172.17.0.1:7890
 
-#  && rm CARLA_${CARLA_VERSION}.tar.gz 
-# && rm AdditionalMaps_${CARLA_VERSION}.tar.gz
 RUN wget -c https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/CARLA_${CARLA_VERSION}.tar.gz -nv --show-progress \
 --progress=bar:force:noscroll \
-&& tar -zxvf CARLA_${CARLA_VERSION}.tar.gz --directory carla\
+&& tar -zxvf CARLA_${CARLA_VERSION}.tar.gz --directory carla && rm CARLA_${CARLA_VERSION}.tar.gz \
 && if [ ${ADDITIONAL_MAPS} = true ] ; then \
 wget -c https://carla-releases.s3.eu-west-3.amazonaws.com/Linux/AdditionalMaps_${CARLA_VERSION}.tar.gz -nv \
 --show-progress --progress=bar:force:noscroll && \
-tar -zxvf AdditionalMaps_${CARLA_VERSION}.tar.gz --directory carla ; \
+tar -zxvf AdditionalMaps_${CARLA_VERSION}.tar.gz --directory carla && rm AdditionalMaps_${CARLA_VERSION}.tar.gz ; \
 elif [ ${ADDITIONAL_MAPS} != false ] ; then echo "Invalid ADDITIONAL_MAPS argument." ; \
 else echo "Additional CARLA maps will not be installed." ; fi && chown -R ${USER}:${USER} /home/carla
 
@@ -132,5 +130,5 @@ else echo "Invalid OPENCDA_FULL_INSTALL argument." ; fi
 
 USER ${USER}
 
-ENV http_proxy ""
-ENV https_proxy ""
+# ENV http_proxy ""
+# ENV https_proxy ""

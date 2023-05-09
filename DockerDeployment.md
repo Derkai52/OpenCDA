@@ -29,6 +29,9 @@ cd ../../ && bash vulkansdk
 # Update Vulkan environment variables
 source setup-env.sh
 
+# Add Vulkan to the current user environment variable
+cat ./setup-env.sh >> ~/.bashrc
+
 # Verify vulkan version
 vulkaninfo
 ```
@@ -94,5 +97,5 @@ For more information about `Conda`, you can refer to [here](https://docs.conda.i
 
 
 ## Remote Client Configuration
-**TODO**
+Please refer to the [Wiki](https://github.com/THU-MIR/OpenCDA/wiki)
 
