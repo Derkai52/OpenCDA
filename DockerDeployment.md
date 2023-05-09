@@ -50,7 +50,7 @@ xhost +
  ```
  5. Build Docker Container
  ```shell
- docker run --privileged --gpus all --network=host -e DISPLAY=$DISPLAY -v /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d -it opencda:latest /bin/bash
+ docker run --privileged --gpus all --network=host -e DISPLAY=$DISPLAY -v /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d --name opencda_container -it opencda_container:latest /bin/bash
  ```
 
 
