@@ -2,16 +2,14 @@
 下面依次介绍项目在服务端和客户端的配置，为了保证万无一失，建议事先通读它们。
 
 ## 服务端配置
-硬件配置：
 * **系统需求**：Ubuntu 16.04/18.04/20.04
-* **足够的GPU**：CARLA 是一个基于虚幻引擎 4 的高真实度模拟平台，建议Nvidia显卡，至少8G显存
+* **足够的GPU**：CARLA 是一个基于虚幻引擎 4 的高真实度模拟平台，建议 Nvidia 显卡和至少8G显存
 * **足够的磁盘空间**：估计需要 100GB 的空间来安装 CARLA 和 Unreal Engine
 * **Python**： Python3.7或更高
+* Carla、SUMO、PyTorch **（默认安装）**
 
 
 同时确保您的计算机能稳定的连接到 `国际互联网`，因为在构建过程中需要下载一些较大的软件包。
-
-镜像构建还包括用于可选安装的 `Carla` 和 `SUMO` 组件（默认安装）
 
 有关 docker 镜像构建的更多信息参考
 [Dockerfile](Dockerfile)  
@@ -69,10 +67,10 @@ cd carla
 
 ```shell
 # 下载 miniconda3
-wget -c https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
+wget -c https://repo.anaconda.com/miniconda/Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
 
 # 安装
-sudo bash ./Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
+sudo bash ./Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
 
 # 创建 Python 虚拟环境
 conda create -n opencda python=3.7
@@ -91,7 +89,7 @@ carla 库包含在 .whl 文件中，该文件位于容器中 carla 目录 Python
 .whl 文件遵循 carla-<carla版本>-py<python版本>-<操作系统>.whl 的命名法。
 
 ``` shell
-# 注意：以实际名称或路径为准
+# 注意：以实际版本名称或路径为准
 
 # 从已构建的容器中复制carla编译包到宿主机
 docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.14-cp37-cp37m-manylinux_2_27_x86_64.whl ./
