@@ -70,7 +70,7 @@ cd carla
 wget -c https://repo.anaconda.com/miniconda/Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
 
 # 安装
-sudo bash ./Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
+bash ./Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
 
 # 创建 Python 虚拟环境
 conda create -n opencda python=3.7
