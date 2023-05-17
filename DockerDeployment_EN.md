@@ -93,16 +93,16 @@ The .whl file nomenclature follows carla-< carla-version>-py< python-version>< o
 # Note: The actual version or path prevails
 
 # Copy the carla compilation package from the built container to the host
-docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.14-cp37-cp37m-manylinux_2_27_x86_64.whl ./
+docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl ./
 
 # Install the carla package
-pip3 install ./carla-0.9.14-cp37-cp37m-manylinux_2_27_x86_64.whl
+pip3 install ./carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl
 ```
 
 ### Run example
 ```shell
 # Run a single autonomous vehicle on a two-lane highway
-python3 opencda.py -t single_2lanefree_carla -v 0.9.14
+python3 opencda.py -t single_2lanefree_carla -v 0.9.12
 ```
 Great！You will see the following screen：
 ![opencda_example](docs/md_files/images/opencda_example.png)

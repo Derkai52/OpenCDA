@@ -92,17 +92,17 @@ carla 库包含在 .whl 文件中，该文件位于容器中 carla 目录 Python
 # 注意：以实际版本名称或路径为准
 
 # 从已构建的容器中复制carla编译包到宿主机
-docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.14-cp37-cp37m-manylinux_2_27_x86_64.whl ./
+docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl ./
 
 # 安装 carla 包
-pip3 install ./carla-0.9.14-cp37-cp37m-manylinux_2_27_x86_64.whl
+pip3 install ./carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl
 ```
 
 
 ### 运行示例
 ```shell
 # 运行双车道高速公路上生成单个自动驾驶车辆
-python3 opencda.py -t single_2lanefree_carla -v 0.9.14
+python3 opencda.py -t single_2lanefree_carla -v 0.9.12
 ```
 大功告成！您将看到如下画面：
 ![opencda_example](docs/md_files/images/opencda_example.png)
