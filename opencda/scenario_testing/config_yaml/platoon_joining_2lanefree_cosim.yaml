@@ -16,6 +16,10 @@ vehicle_base:
         positions: []
       lidar:
         visualize: false
+    localization:
+      activate: true # when not activated, ego position will be retrieved from server directly
+      debug_helper:
+        show_animation: false # whether to show real-time trajectory plotting
   map_manager:
     visualize: false
     activate: false

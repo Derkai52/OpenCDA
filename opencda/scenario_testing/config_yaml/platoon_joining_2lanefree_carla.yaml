@@ -96,6 +96,10 @@ scenario:
               - [2.5, 0, 1.0, 0]
           lidar:
             visualize: true
+      localization:
+        activate: true # when not activated, ego position will be retrieved from server directly
+        debug_helper:
+          show_animation: false # whether to show real-time trajectory plotting
       v2x:
         communication_range: 35
       behavior:

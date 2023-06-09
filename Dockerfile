@@ -111,7 +111,7 @@ else echo "Perception components (PyTorch and YOLOv5) will not be installed." ; 
 # Install SUMO.
 
 RUN if [ ${SUMO} = true ] ; then \
-add-apt-repository ppa:sumo/stable && apt-get update && apt-get install -y sumo sumo-tools sumo-doc && apt-get install --fix-missing\
+apt-get update && apt-get install -y sumo sumo-tools sumo-doc && apt-get install --fix-missing \
 && pip install traci ; \
 elif [ ${SUMO} != false ] ; then echo "Invalid SUMO argument." ; \
 else echo "SUMO will not be installed." ; fi
