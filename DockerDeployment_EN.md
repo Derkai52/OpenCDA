@@ -7,7 +7,7 @@ To get started, the following requirements should be fulfilled.
 * **System requirements**. Any 64-bits OS should run OpenCDA. We highly recommends Ubuntu 16.04/18.04/20.04.
 * **Adequate GPU**. CARLA is a realistic simulation platform based on Unreal Engine 4, which requires at least a 3GB GPU for smooth scene rendering, though 8GB is recommended.
 * **Disk Space**. Estimate 100GB of space is recommended to install CARLA and Unreal Engine.
-* **Python**. Python3.7 or higher version is required for full functions.
+* **Python**. Python3.8 or higher version is required for full functions.
 * Carla、SUMO、PyTorch **(installed by default)**
 
 Make sure your computer is connected to the `The Real Internet`   beforehand, as there are some relatively large packages that need to be downloaded during the build process.
@@ -69,13 +69,13 @@ After loading for a moment, you'll see a city simulation window. Great! Using th
 
 ```shell
 # Download miniconda3
-wget -c https://repo.anaconda.com/miniconda/Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
+wget -c https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
 
 # Install
-bash ./Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
+bash ./Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
 
 # Build Python Env
-conda create -n opencda python=3.7
+conda create -n opencda python=3.8
 
 conda activate opencda
 
@@ -93,10 +93,10 @@ The .whl file nomenclature follows carla-< carla-version>-py< python-version>< o
 # Note: The actual version or path prevails
 
 # Copy the carla compilation package from the built container to the host
-docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl ./
+docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp38-cp38-manylinux_x86_64.whl ./
 
 # Install the carla package
-pip3 install ./carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl
+pip3 install ./carla-0.9.12-cp38-cp38-manylinux_x86_64.whl
 ```
 
 ### Run example
