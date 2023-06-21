@@ -91,7 +91,10 @@ carla 库包含在 .whl 文件中，该文件位于容器中 carla 目录 Python
 ``` shell
 # 注意：以实际版本名称或路径为准
 
-# 从已构建的容器中复制carla编译包到宿主机
+# 【推荐】也可以直接通过下载 https://github.com/Derkai52/OpenCDA/releases/tag/carla-0.9.12 直接获取
+wget -c https://github.com/Derkai52/OpenCDA/releases/download/carla-0.9.12/carla-0.9.12-cp38-cp38-linux_x86_64.whl
+
+# 【可选】从已构建的容器中复制carla编译包到宿主机
 docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp38-cp38-linux_x86_64.whl ./
 
 # 安装 carla 包
