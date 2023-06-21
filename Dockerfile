@@ -59,7 +59,7 @@ FROM nvidia/vulkan:1.3-470
 # Define build arguments and environment variables.
 
 ARG USER=opencda
-ARG CARLA_VERSION=0.9.14
+ARG CARLA_VERSION=0.9.12
 ARG ADDITIONAL_MAPS=true
 ARG PERCEPTION=true
 ARG SUMO=true
