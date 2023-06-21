@@ -5,7 +5,7 @@
 * **系统需求**：Ubuntu 16.04/18.04/20.04
 * **足够的GPU**：CARLA 是一个基于虚幻引擎 4 的高真实度模拟平台，建议 Nvidia 显卡和至少8G显存
 * **足够的磁盘空间**：估计需要 100GB 的空间来安装 CARLA 和 Unreal Engine
-* **Python**： Python3.7或更高
+* **Python**： Python3.8或更高
 * Carla、SUMO、PyTorch **（默认安装）**
 
 
@@ -70,10 +70,10 @@ cd carla
 wget -c https://repo.anaconda.com/miniconda/Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
 
 # 安装
-bash ./Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
+bash ./Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
 
 # 创建 Python 虚拟环境
-conda create -n opencda python=3.7
+conda create -n opencda python=3.8
 
 conda activate opencda
 
@@ -92,10 +92,10 @@ carla 库包含在 .whl 文件中，该文件位于容器中 carla 目录 Python
 # 注意：以实际版本名称或路径为准
 
 # 从已构建的容器中复制carla编译包到宿主机
-docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl ./
+docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp38-cp38-linux_x86_64.whl ./
 
 # 安装 carla 包
-pip3 install ./carla-0.9.12-cp37-cp37m-manylinux_2_27_x86_64.whl
+pip3 install ./carla-0.9.12-cp38-cp38-linux_x86_64.whl
 ```
 
 
