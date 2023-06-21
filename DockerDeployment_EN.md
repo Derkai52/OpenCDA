@@ -92,7 +92,10 @@ The .whl file nomenclature follows carla-< carla-version>-py< python-version>< o
 ``` shell
 # Note: The actual version or path prevails
 
-# Copy the carla compilation package from the built container to the host
+# [Recommended] can also be obtained directly by downloading https://github.com/Derkai52/OpenCDA/releases/tag/carla-0.9.12
+wget -c https://github.com/Derkai52/OpenCDA/releases/download/carla-0.9.12/carla-0.9.12-cp38-cp38-linux_x86_64.whl
+
+# [Optional] Copy the carla compilation package from the built container to the host
 docker cp opencda_container:/home/carla/PythonAPI/carla/dist/carla-0.9.12-cp38-cp38-linux_x86_64.whl ./
 
 # Install the carla package
