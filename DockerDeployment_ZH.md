@@ -67,7 +67,7 @@ cd carla
 
 ```shell
 # 下载 miniconda3
-wget -c https://repo.anaconda.com/miniconda/Miniconda3-py37_23.1.0-1-Linux-x86_64.sh
+wget -c https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
 
 # 安装
 bash ./Miniconda3-py38_23.1.0-1-Linux-x86_64.sh
